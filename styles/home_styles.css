@@ -20,7 +20,11 @@ h1, h2 {
     width: 40%;
     display: inline-block;
     margin-left: 5%;
-    padding-bottom: 70px;
+    padding-bottom: 110px;
+}
+
+.navbar {
+    margin-bottom: 20px;
 }
 
 .quotes {
