@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * Controller for Your Dating Website. Routes root traffic to home.html view.
+ *
+ * @auther  Keller Flint
+ * @date    1/16/2020
+ */
 // This is out controller!
 
 // Turn on error reporting
