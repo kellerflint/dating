@@ -2,15 +2,25 @@ body {
     background-color: whitesmoke;
 }
 
+.button-row {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.container {
+    border: 1px solid grey;
+    border-radius: 20px;
+}
+
 h1, h2 {
     text-align: center;
 }
 
 #image-container {
-    padding-top: 80px;
     width: 40%;
-    float: right;
+    display: inline-block;
     margin-left: 5%;
+    padding-bottom: 70px;
 }
 
 .quotes {
@@ -24,6 +34,6 @@ span {
 }
 
 #text-container {
-    width: 55%;
-    float: left;
+    width: 50%;
+    display: inline-block;
 }
