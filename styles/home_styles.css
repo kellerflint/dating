@@ -6,8 +6,24 @@ h1, h2 {
     text-align: center;
 }
 
+#image-container {
+    padding-top: 80px;
+    width: 40%;
+    float: right;
+    margin-left: 5%;
+}
+
 .quotes {
     border-top: 1px solid grey;
     border-bottom: 1px solid grey;
     margin-top: 15px;
+}
+
+span {
+    font-weight: bold;
+}
+
+#text-container {
+    width: 55%;
+    float: left;
 }
