@@ -15,7 +15,7 @@ Create summary page for dating site user.
     <!-- Bootstrap CDN-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles/profile_form_styles.css">
+    <link rel="stylesheet" href="styles/summary_styles.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -26,15 +26,31 @@ Create summary page for dating site user.
     </button>
 </nav>
 <div class="container mt-3">
-    <p>{{ @SESSION.first }} {{ @SESSION.last }}</p>
-    <p>{{ @SESSION.gender }}</p>
-    <p>{{ @SESSION.age }}</p>
-    <p>{{ @SESSION.phone }}</p>
-    <p>{{ @SESSION.email }}</p>
-    <p>{{ @SESSION.state }}</p>
-    <p>{{ @SESSION.seeking }}</p>
-    <p>{{ @SESSION.interests }}</p>
-    <p>{{ @SESSION.bio }}</p>
+    <div class="row p-3">
+        <div class="col-sm">
+            <div class="row border p-3">Name: {{ @SESSION.first }} {{ @SESSION.last }}</div>
+            <div class="row border p-3">Gender: {{ @SESSION.gender }}</div>
+            <div class="row border p-3">Age: {{ @SESSION.age }}</div>
+            <div class="row border p-3">Phone: {{ @SESSION.phone }}</div>
+            <div class="row border p-3">Email: {{ @SESSION.email }}</div>
+            <div class="row border p-3">State: {{ @SESSION.state }}</div>
+            <div class="row border p-3">Seeking: {{ @SESSION.seeking }}</div>
+            <div class="row border p-3">Interests: {{ @SESSION.interests }}</div>
+
+        </div>
+        <div class="col-sm">
+            <div class="row p-3">
+                <img src="images/profile.PNG" alt="Default profile image">
+            </div>
+            <div class="row p-3">
+                {{ @SESSION.bio }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <button type="button" class="btn btn-primary mx-auto">Contact me.</button>
+    </div>
+
 </div>
 </body>
 </html>
