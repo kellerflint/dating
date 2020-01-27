@@ -1,0 +1,74 @@
+<!--
+
+Create profile page for dating site user.
+
+@author  Keller Flint
+@date    1/26/2020
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+
+    <title>Your Dating Website</title>
+    <!-- Bootstrap CDN-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/personal_form_styles.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/328/dating/">Your Dating Website</a>
+    <!--Empty button link for now-->
+    <button class="navbar-toggler" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</nav>
+<div class="container mt-3">
+    <h1>Personal Information</h1>
+    <form action="profile" method="POST">
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group">
+                    <label for="first">First Name</label>
+                    <input type="text" class="form-control" id="first" name="first">
+                </div>
+                <div class="form-group">
+                    <label for="last">Last Name</label>
+                    <input type="text" class="form-control" id="last" name="last">
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" class="form-control" id="age" name="age">
+                </div>
+                <label>Gender</label>
+                <div class="d-flex">
+                    <div class="form-check pr-5">
+                        <input class="form-check-input" type="radio" name="gender" id="male" value="Male" checked>
+                        <label class="form-check-label" for="male">
+                            Male
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" id="female" value="Female">
+                        <label class="form-check-label" for="female">
+                            Female
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="text" class="form-control" id="phone" name="phone">
+                </div>
+            </div>
+            <div class="col-4">
+                <p class="note"><strong>Note:</strong> All information entered is protected by our <a href="">privacy
+                    policy</a>. Profile information can only be viewed by others with your permission.</p>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary float-right">Next ></button>
+    </form>
+</div>
+</body>
+</html>

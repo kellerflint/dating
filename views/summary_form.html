@@ -1,0 +1,40 @@
+<!--
+
+Create summary page for dating site user.
+
+@author  Keller Flint
+@date    1/26/2020
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <title>Your Dating Website</title>
+    <!-- Bootstrap CDN-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/profile_form_styles.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/328/dating/">Your Dating Website</a>
+    <!--Empty button link for now-->
+    <button class="navbar-toggler" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</nav>
+<div class="container mt-3">
+    <p>{{ @SESSION.first }} {{ @SESSION.last }}</p>
+    <p>{{ @SESSION.gender }}</p>
+    <p>{{ @SESSION.age }}</p>
+    <p>{{ @SESSION.phone }}</p>
+    <p>{{ @SESSION.email }}</p>
+    <p>{{ @SESSION.state }}</p>
+    <p>{{ @SESSION.seeking }}</p>
+    <p>{{ @SESSION.interests }}</p>
+    <p>{{ @SESSION.bio }}</p>
+</div>
+</body>
+</html>
