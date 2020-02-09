@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 /**
  * Controller for Your Dating Website. Routes root traffic to home.html view.
