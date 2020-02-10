@@ -32,24 +32,46 @@ Create profile page for dating site user.
             <div class="col-6">
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email">
+                    <input type="email" class="form-control" id="email" name="email" value="{{ @email }}">
+                    <p>{{ @errors["email"] }}</p>
                 </div>
                 <label for="state">State</label>
                 <select class="form-control" id="state" name="state">
-                    <option value="Washington">Washington</option>
-                    <option value="Oregon">Oregon</option>
-                    <option value="California">California</option>
+                    <repeat group="{{ @states }}" value="{{ @value }}">
+                        <check if="@state == @value">
+                            <true>
+                                <option value="{{ @value }}" selected>{{ @value }}</option>
+                            </true>
+                            <false>
+                                <option value="{{ @value }}">{{ @value }}</option>
+                            </false>
+                        </check>
+                    </repeat>
                 </select>
                 <label>Seeking</label>
                 <div class="d-flex">
                     <div class="form-check pr-5">
-                        <input class="form-check-input" type="radio" name="seeking" id="male" value="Male" checked>
+                        <check if="{{ @seeking == 'Male' }}">
+                            <true>
+                                <input class="form-check-input" type="radio" name="seeking" id="male" value="Male" checked>
+                            </true>
+                            <false>
+                                <input class="form-check-input" type="radio" name="seeking" id="male" value="Male">
+                            </false>
+                        </check>
                         <label class="form-check-label" for="male">
                             Male
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="seeking" id="female" value="Female">
+                        <check if="{{ @seeking == 'Female' }}">
+                            <true>
+                                <input class="form-check-input" type="radio" name="seeking" id="female" value="Female" checked>
+                            </true>
+                            <false>
+                                <input class="form-check-input" type="radio" name="seeking" id="female" value="Female">
+                            </false>
+                        </check>
                         <label class="form-check-label" for="female">
                             Female
                         </label>

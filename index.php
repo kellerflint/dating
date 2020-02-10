@@ -23,6 +23,8 @@ $f3 = Base::instance();
 
 session_start();
 
+$f3->set("states", array("Washington", "Oregon", "California"));
+
 //define default route
 $f3->route('GET /', function () {
     $view = new Template();
@@ -65,7 +67,7 @@ $f3->route('GET|POST /personal', function ($f3) {
     echo $view->render("views/personal_form.html");
 });
 
-$f3->route('GET|POST /profile', function () {
+$f3->route('GET|POST /profile', function ($f3) {
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $f3->set("email", $_POST["email"]);
@@ -74,25 +76,13 @@ $f3->route('GET|POST /profile', function () {
         $f3->set("bio", $_POST["bio"]);
 
         $isValid = true;
-        if (!validName($_POST["first"])) {
-            $f3->set("errors['first']", "Enter a valid first name.");
-            $isValid = false;
-        }
-        if (!validName($_POST["last"])) {
-            $f3->set("errors['last']", "Enter a valid last name.");
-            $isValid = false;
-        }
-        if (!validAge($_POST["age"])) {
-            $f3->set("errors['age']", "Enter a valid age (between 18-118)");
-            $isValid = false;
-        }
-        if (!validPhone($_POST["phone"])) {
-            $f3->set("errors['phone']", "Enter a valid phone number (i.e. 1234567890)");
+        if (!validEmail($_POST["email"])) {
+            $f3->set("errors['email']", "Enter a valid email.");
             $isValid = false;
         }
 
         if ($isValid) {
-            $f3->reroute("/profile");
+            $f3->reroute("/interests");
         }
     }
 
@@ -101,10 +91,8 @@ $f3->route('GET|POST /profile', function () {
 });
 
 $f3->route('GET|POST /interests', function () {
-    $_SESSION["email"] = $_POST["email"];
-    $_SESSION["state"] = $_POST["state"];
-    $_SESSION["seeking"] = $_POST["seeking"];
-    $_SESSION["bio"] = $_POST["bio"];
+
+
     $view = new Template();
     echo $view->render("views/interests_form.html");
 });
