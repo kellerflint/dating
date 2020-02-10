@@ -14,16 +14,20 @@ error_reporting(E_ALL);
 // Require the autoload file
 require_once ("vendor/autoload.php");
 
+// create an instance of the base class
+$f3 = Base::instance();
+
+// Declare option arrays
+$f3->set("states", array("Washington", "Oregon", "California"));
+$indoor = array("tv", "movies", "cooking", "board games", "puzzle", "reading", "playing cards", "video games");
+$f3->set("indoor", $indoor);
+$outdoor = array("hiking", "biking", "swimming", "collecting", "walking", "climbing");
+$f3->set("outdoor", $outdoor);
+
 // Require validation functions
 require_once ("models/validation_functions.php");
 
-// create an instance of the base class
-
-$f3 = Base::instance();
-
 session_start();
-
-$f3->set("states", array("Washington", "Oregon", "California"));
 
 //define default route
 $f3->route('GET /', function () {
