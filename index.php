@@ -12,7 +12,7 @@ ini_set("display_errors", 1);
 error_reporting(E_ALL);
 
 // Require the autoload file
-require_once ("vendor/autoload.php");
+require_once("vendor/autoload.php");
 
 // create an instance of the base class
 $f3 = Base::instance();
@@ -20,12 +20,12 @@ $f3 = Base::instance();
 // Declare option arrays
 $f3->set("states", array("Washington", "Oregon", "California"));
 $indoor = array("tv", "movies", "cooking", "board games", "puzzle", "reading", "playing cards", "video games");
-$f3->set("indoor", $indoor);
+$f3->set("indoors", $indoor);
 $outdoor = array("hiking", "biking", "swimming", "collecting", "walking", "climbing");
-$f3->set("outdoor", $outdoor);
+$f3->set("outdoors", $outdoor);
 
 // Require validation functions
-require_once ("models/validation_functions.php");
+require_once("models/validation_functions.php");
 
 session_start();
 
@@ -63,6 +63,10 @@ $f3->route('GET|POST /personal', function ($f3) {
         }
 
         if ($isValid) {
+            $_SESSION["name"] = $_POST["first"] . " " . $_POST["last"];
+            $_SESSION["age"] = $_POST["age"];
+            $_SESSION["phone"] = $_POST["phone"];
+            $_SESSION["gender"] = $_POST["gender"];
             $f3->reroute("/profile");
         }
     }
@@ -86,6 +90,10 @@ $f3->route('GET|POST /profile', function ($f3) {
         }
 
         if ($isValid) {
+            $_SESSION["email"] = $_POST["email"];
+            $_SESSION["state"] = $_POST["state"];
+            $_SESSION["seeking"] = $_POST["seeking"];
+            $_SESSION["bio"] = $_POST["bio"];
             $f3->reroute("/interests");
         }
     }
@@ -94,22 +102,41 @@ $f3->route('GET|POST /profile', function ($f3) {
     echo $view->render("views/profile_form.html");
 });
 
-$f3->route('GET|POST /interests', function () {
+$f3->route('GET|POST /interests', function ($f3) {
 
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $f3->set("indoor", $_POST["indoor"]);
+        $f3->set("outdoor", $_POST["outdoor"]);
+
+        $isValid = true;
+        if (!validIndoor($_POST["indoor"]) || !validOutdoor($_POST["outdoor"])) {
+            $f3->set("errors['interests']", "Don't spoof my forms!");
+            $isValid = false;
+        }
+
+        if ($isValid) {
+            $result = "";
+            if (isset($_POST["indoor"])) {
+                foreach ($_POST["indoor"] as $value) {
+                    $result .= "$value ";
+                }
+            }
+            if (isset($_POST["outdoor"])) {
+                foreach ($_POST["outdoor"] as $value) {
+                    $result .= "$value ";
+                }
+            }
+            $_SESSION["interests"] = $result;
+
+            $f3->reroute("/summary");
+        }
+    }
 
     $view = new Template();
     echo $view->render("views/interests_form.html");
 });
 
 $f3->route('GET /summary', function () {
-    $result = "";
-    foreach ($_POST["indoor"] as $value) {
-        $result .= "$value ";
-    }
-    foreach ($_POST["outdoor"] as $value) {
-        $result .= "$value ";
-    }
-    $_SESSION["interests"] = $result;
     $view = new Template();
     echo $view->render("views/summary_form.html");
 });

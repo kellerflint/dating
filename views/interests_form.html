@@ -31,10 +31,18 @@ Interests page form for dating site user.
     <form action="#" method="POST">
         <h5>In-door</h5>
         <div class="form-group mx-4">
-            <repeat group=" @indoor " value="{{ @value }}">
+            <repeat group="{{ @indoors }}" value="{{ @value }}">
                 <div class="d-inline-block">
-                    <input class="form-check-input" type="checkbox" value="{{ @value }}" id="{{ @value }}"
-                           name="indoor[]">
+                    <check if="{{ isset(@indoor) && in_array(@value, @indoor) }}">
+                        <true>
+                            <input class="form-check-input" type="checkbox" value="{{ @value }}" id="{{ @value }}"
+                                   name="indoor[]" checked>
+                        </true>
+                        <false>
+                            <input class="form-check-input" type="checkbox" value="{{ @value }}" id="{{ @value }}"
+                                   name="indoor[]">
+                        </false>
+                    </check>
                     <label class="form-check-label" for="{{ @value }}">
                         {{ @value }}
                     </label>
@@ -43,17 +51,25 @@ Interests page form for dating site user.
         </div>
         <h5>Out-door</h5>
         <div class="form-group mx-4">
-            <repeat group="{{ @outdoor }}" value="{{ @value }}">
+            <repeat group="{{ @outdoors }}" value="{{ @value }}">
                 <div class="d-inline-block">
-                    <input class="form-check-input" type="checkbox" value="{{ @value }}" id="{{ @value }}"
-                           name="outdoor[]">
+                    <check if="{{ isset(@outdoor) && in_array(@value, @outdoor) }}">
+                        <true>
+                            <input class="form-check-input" type="checkbox" value="{{ @value }}" id="{{ @value }}"
+                                   name="outdoor[]" checked>
+                        </true>
+                        <false>
+                            <input class="form-check-input" type="checkbox" value="{{ @value }}" id="{{ @value }}"
+                                   name="outdoor[]">
+                        </false>
+                    </check>
                     <label class="form-check-label" for="{{ @value }}">
                         {{ @value }}
                     </label>
                 </div>
             </repeat>
         </div>
-
+        <p>{{ @errors["interests"] }}</p>
         <button type="submit" class="btn btn-primary float-right">Next ></button>
     </form>
 </div>

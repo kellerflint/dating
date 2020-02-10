@@ -43,18 +43,37 @@ function validEmail($str) {
 
 /**
  * Returns true if selected outdoor interests are valid
- * @param $array array selected outdoor interests
+ * @param $input array selected outdoor interests
  * @return bool
  */
-function validOutdoor($array) {
-    return false;
+function validOutdoor($input) {
+    global $outdoor;
+    if (!isset($input)) {
+        return true;
+    }
+    foreach ($input as $value) {
+        if (!in_array($value, $outdoor)) {
+            return false;
+        }
+    }
+    return true;
 }
 
 /**
  * Returns true if selected indoor interests are valid
- * @param $array array selected indoor interests
+ * @param $input array selected indoor interests
  * @return bool
  */
-function validIndoor($array) {
-    return false;
+function validIndoor($input) {
+    global $indoor;
+    if (!isset($input)) {
+        return true;
+    }
+    foreach ($input as $value) {
+        if (!in_array($value, $indoor)) {
+            return false;
+        }
+    }
+
+    return true;
 }
