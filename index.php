@@ -63,7 +63,8 @@ $f3->route('GET|POST /personal', function ($f3) {
         }
 
         if ($isValid) {
-            $_SESSION["name"] = $_POST["first"] . " " . $_POST["last"];
+            $_SESSION["first"] = $_POST["first"];
+            $_SESSION["last"] = $_POST["last"];
             $_SESSION["age"] = $_POST["age"];
             $_SESSION["phone"] = $_POST["phone"];
             $_SESSION["gender"] = $_POST["gender"];
