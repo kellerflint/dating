@@ -1,6 +1,10 @@
 <?php
 
-
+/**
+ * Class Member contains data for site members.
+ *
+ * @author Keller Flint
+ */
 class Member
 {
     private $_fname;
@@ -15,11 +19,11 @@ class Member
 
     /**
      * Member constructor.
-     * @param $_fname
-     * @param $_lname
-     * @param $_age
-     * @param $_gender
-     * @param $_phone
+     * @param $_fname string first name
+     * @param $_lname string last name
+     * @param $_age int age
+     * @param $_gender string gender
+     * @param $_phone string phone number
      */
     public function __construct($_fname, $_lname, $_age, $_gender, $_phone)
     {
@@ -31,7 +35,7 @@ class Member
     }
 
     /**
-     * @return mixed
+     * @return string first name
      */
     public function getFname()
     {
@@ -39,7 +43,7 @@ class Member
     }
 
     /**
-     * @param mixed $fname
+     * @param string first name
      */
     public function setFname($fname)
     {
@@ -47,7 +51,7 @@ class Member
     }
 
     /**
-     * @return mixed
+     * @return string last name
      */
     public function getLname()
     {
@@ -55,7 +59,7 @@ class Member
     }
 
     /**
-     * @param mixed $lname
+     * @param string last name
      */
     public function setLname($lname)
     {
@@ -63,7 +67,7 @@ class Member
     }
 
     /**
-     * @return mixed
+     * @return int age
      */
     public function getAge()
     {
@@ -71,7 +75,7 @@ class Member
     }
 
     /**
-     * @param mixed $age
+     * @param int age
      */
     public function setAge($age)
     {
@@ -79,7 +83,7 @@ class Member
     }
 
     /**
-     * @return mixed
+     * @return string gender
      */
     public function getGender()
     {
@@ -87,7 +91,7 @@ class Member
     }
 
     /**
-     * @param mixed $gender
+     * @param string gender
      */
     public function setGender($gender)
     {
@@ -95,7 +99,7 @@ class Member
     }
 
     /**
-     * @return mixed
+     * @return string phone
      */
     public function getPhone()
     {
@@ -103,7 +107,7 @@ class Member
     }
 
     /**
-     * @param mixed $phone
+     * @param string phone
      */
     public function setPhone($phone)
     {
@@ -111,7 +115,7 @@ class Member
     }
 
     /**
-     * @return mixed
+     * @return string email
      */
     public function getEmail()
     {
@@ -119,7 +123,7 @@ class Member
     }
 
     /**
-     * @param mixed $email
+     * @param string email
      */
     public function setEmail($email)
     {
@@ -127,7 +131,7 @@ class Member
     }
 
     /**
-     * @return mixed
+     * @return string state
      */
     public function getState()
     {
@@ -135,7 +139,7 @@ class Member
     }
 
     /**
-     * @param mixed $state
+     * @param string state
      */
     public function setState($state)
     {
@@ -143,7 +147,7 @@ class Member
     }
 
     /**
-     * @return mixed
+     * @return string seeking
      */
     public function getSeeking()
     {
@@ -151,7 +155,7 @@ class Member
     }
 
     /**
-     * @param mixed $seeking
+     * @param string $seeking
      */
     public function setSeeking($seeking)
     {
@@ -159,7 +163,7 @@ class Member
     }
 
     /**
-     * @return mixed
+     * @return string bio
      */
     public function getBio()
     {
@@ -167,7 +171,7 @@ class Member
     }
 
     /**
-     * @param mixed $bio
+     * @param string bio
      */
     public function setBio($bio)
     {
