@@ -91,10 +91,12 @@ $f3->route('GET|POST /profile', function ($f3) {
         }
 
         if ($isValid) {
-            $_SESSION["email"] = $_POST["email"];
-            $_SESSION["state"] = $_POST["state"];
-            $_SESSION["seeking"] = $_POST["seeking"];
-            $_SESSION["bio"] = $_POST["bio"];
+
+            $_SESSION["member"]->setEmail($_POST["email"]);
+            $_SESSION["member"]->setState($_POST["state"]);
+            $_SESSION["member"]->setSeeking($_POST["seeking"]);
+            $_SESSION["member"]->setBio($_POST["bio"]);
+
             $f3->reroute("/interests");
         }
     }
@@ -104,6 +106,10 @@ $f3->route('GET|POST /profile', function ($f3) {
 });
 
 $f3->route('GET|POST /interests', function ($f3) {
+
+    if (get_class($_SESSION["member"]) == "Member") {
+        $f3->reroute("/summary");
+    }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $f3->set("indoor", $_POST["indoor"]);
@@ -116,18 +122,21 @@ $f3->route('GET|POST /interests', function ($f3) {
         }
 
         if ($isValid) {
-            $result = "";
+            $resultIn = "";
+            $resultOut = "";
             if (isset($_POST["indoor"])) {
                 foreach ($_POST["indoor"] as $value) {
-                    $result .= "$value ";
+                    $resultIn .= "$value ";
                 }
             }
             if (isset($_POST["outdoor"])) {
                 foreach ($_POST["outdoor"] as $value) {
-                    $result .= "$value ";
+                    $resultOut .= "$value ";
                 }
             }
-            $_SESSION["interests"] = $result;
+
+            $_SESSION["member"]->setInDoorInterests($resultIn);
+            $_SESSION["member"]->setOutDoorInterests($resultOut);
 
             $f3->reroute("/summary");
         }
