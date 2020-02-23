@@ -122,16 +122,16 @@ $f3->route('GET|POST /interests', function ($f3) {
         }
 
         if ($isValid) {
-            $resultIn = "";
-            $resultOut = "";
+            $resultIn = array();
+            $resultOut = array();
             if (isset($_POST["indoor"])) {
                 foreach ($_POST["indoor"] as $value) {
-                    $resultIn .= "$value ";
+                    array_push($resultIn, $value);
                 }
             }
             if (isset($_POST["outdoor"])) {
                 foreach ($_POST["outdoor"] as $value) {
-                    $resultOut .= "$value ";
+                    array_push($resultOut, $value);
                 }
             }
 

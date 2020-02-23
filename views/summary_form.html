@@ -38,8 +38,15 @@ Create summary page for dating site user.
             <div class="row border p-3">State: {{ @SESSION["member"]->getState() }}</div>
             <div class="row border p-3">Seeking: {{ @SESSION["member"]->getSeeking() }}</div>
             <check if="{{ get_class(@SESSION['member']) == 'PremiumMember' }}">
-                <div class="row border p-3">Interests: {{ @SESSION["member"]->getInDoorInterests() }} {{
-                    @SESSION["member"]->getOutDoorInterests() }}
+                <div class="row border p-3">Interests:
+                    <repeat group="{{ @SESSION['member']->getInDoorInterests() }}"
+                            value="{{ @val }}">
+                        {{ @val }}
+                    </repeat>
+                    <repeat group="{{ @SESSION['member']->getOutDoorInterests() }}"
+                            value="{{ @val }}">
+                        {{ @val }}
+                    </repeat>
                 </div>
             </check>
 
