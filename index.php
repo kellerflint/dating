@@ -63,11 +63,11 @@ $f3->route('GET|POST /personal', function ($f3) {
         }
 
         if ($isValid) {
-            $_SESSION["first"] = $_POST["first"];
-            $_SESSION["last"] = $_POST["last"];
-            $_SESSION["age"] = $_POST["age"];
-            $_SESSION["phone"] = $_POST["phone"];
-            $_SESSION["gender"] = $_POST["gender"];
+            if (isset($_POST["premium"])) {
+                $_SESSION["member"] = new PremiumMember($_POST["first"], $_POST["last"], $_POST["age"], $_POST["phone"], $_POST["gender"]);
+            } else {
+                $_SESSION["member"] = new Member($_POST["first"], $_POST["last"], $_POST["age"], $_POST["phone"], $_POST["gender"]);
+            }
             $f3->reroute("/profile");
         }
     }
