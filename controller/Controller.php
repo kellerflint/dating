@@ -61,9 +61,9 @@ class Controller
 
             if ($isValid) {
                 if (isset($_POST["premium"])) {
-                    $_SESSION["member"] = new PremiumMember($_POST["first"], $_POST["last"], $_POST["age"], $_POST["phone"], $_POST["gender"]);
+                    $_SESSION["member"] = new PremiumMember($_POST["first"], $_POST["last"], $_POST["age"], $_POST["gender"], $_POST["phone"]);
                 } else {
-                    $_SESSION["member"] = new Member($_POST["first"], $_POST["last"], $_POST["age"], $_POST["phone"], $_POST["gender"]);
+                    $_SESSION["member"] = new Member($_POST["first"], $_POST["last"], $_POST["age"], $_POST["gender"], $_POST["phone"]);
                 }
                 $this->_f3->reroute("/profile");
             }
