@@ -26,6 +26,7 @@ $f3->set("outdoors", $outdoor);
 
 session_start();
 
+$db = new Database();
 $controller = new Controller($f3);
 
 //define default route
