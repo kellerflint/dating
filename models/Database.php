@@ -77,4 +77,34 @@ class Database
             //echo $e->getMessage();
         }
     }
+
+    function insertMember() {
+
+    }
+
+    function getMembers() {
+
+    }
+
+    function getMember($member_id) {
+
+    }
+
+    function getInterests($member_id) {
+
+    }
+
+    function getIndoorInterests() {
+        $sql = "SELECT * FROM interests WHERE type = 'indoor'";
+        $statement = $this->_db->prepare($sql);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function getOutdoorInterests() {
+        $sql = "SELECT * FROM interests WHERE type = 'outdoor'";
+        $statement = $this->_db->prepare($sql);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

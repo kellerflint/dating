@@ -112,6 +112,12 @@ class Controller
     function interests()
     {
 
+        global $db;
+
+        $this->_f3->set("indoors", $db->getIndoorInterests());
+        $this->_f3->set("outdoors", $db->getOutdoorInterests());
+
+
         if (get_class($_SESSION["member"]) == "Member") {
             $this->_f3->reroute("/summary");
         }

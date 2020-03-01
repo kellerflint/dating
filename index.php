@@ -17,12 +17,7 @@ require_once("vendor/autoload.php");
 // create an instance of the base class
 $f3 = Base::instance();
 
-// Declare option arrays
 $f3->set("states", array("Washington", "Oregon", "California"));
-$indoor = array("tv", "movies", "cooking", "board games", "puzzle", "reading", "playing cards", "video games");
-$f3->set("indoors", $indoor);
-$outdoor = array("hiking", "biking", "swimming", "collecting", "walking", "climbing");
-$f3->set("outdoors", $outdoor);
 
 session_start();
 
