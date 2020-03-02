@@ -7,7 +7,7 @@ CREATE TABLE members
     gender VARCHAR(255) NOT NULL,
     phone VARCHAR(10) NOT NULL,
     email VARCHAR(255) NOT NULL,
-    state VARCHAR(2) NOT NULL,
+    state VARCHAR(255) NOT NULL,
     seeking VARCHAR(255) NOT NULL,
     bio VARCHAR(5000) NOT NULL,
     premium TINYINT NOT NULL,

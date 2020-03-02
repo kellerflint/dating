@@ -79,7 +79,39 @@ class Database
     }
 
     function insertMember() {
+        if (get_class($_SESSION["member"]) == "PremiumMember") {
+            $sql = "INSERT INTO members VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, 'path/image.png')";
+        } else {
+            $sql = "INSERT INTO members VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, NULL)";
+        }
+        $statement = $this->_db->prepare($sql);
+        
+        $statement->execute([
+            $_SESSION["member"]->getFname(),
+            $_SESSION["member"]->getLname(),
+            $_SESSION["member"]->getAge(),
+            $_SESSION["member"]->getGender(),
+            $_SESSION["member"]->getPhone(),
+            $_SESSION["member"]->getEmail(),
+            $_SESSION["member"]->getState(),
+            $_SESSION["member"]->getSeeking(),
+            $_SESSION["member"]->getBio()
+        ]);
 
+        $id = $this->_db->lastInsertId();
+
+        if (get_class($_SESSION["member"]) == "PremiumMember") {
+            foreach($_SESSION["member"]->getInDoorInterests() as $value) {
+                $sql = "INSERT INTO members_interests VALUES (?, ?)";
+                $statement = $this->_db->prepare($sql);
+                $statement->execute([$id, $value]);
+            }
+            foreach($_SESSION["member"]->getOutDoorInterests() as $value) {
+                $sql = "INSERT INTO members_interests VALUES (?, ?)";
+                $statement = $this->_db->prepare($sql);
+                $statement->execute([$id, $value]);
+            }
+        }
     }
 
     function getMembers() {

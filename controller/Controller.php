@@ -162,6 +162,8 @@ class Controller
      */
     function summary()
     {
+        global $db;
+        $db->insertMember();
         $view = new Template();
         echo $view->render("views/summary_form.html");
     }

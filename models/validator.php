@@ -56,7 +56,12 @@ class Validator
      * @return bool
      */
     function validOutdoor($input) {
-        global $outdoor;
+        global $db;
+        $outdoorResult = $db->getOutdoorInterests();
+        $outdoor = array();
+        foreach($outdoorResult as $value) {
+            array_push($outdoor, $value["interest_id"]);
+        }
         if (!isset($input)) {
             return true;
         }
@@ -74,7 +79,12 @@ class Validator
      * @return bool
      */
     function validIndoor($input) {
-        global $indoor;
+        global $db;
+        $indoorResult = $db->getIndoorInterests();
+        $indoor = array();
+        foreach($indoorResult as $value) {
+            array_push($indoor, $value["interest_id"]);
+        }
         if (!isset($input)) {
             return true;
         }
