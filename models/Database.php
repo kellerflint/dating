@@ -116,11 +116,10 @@ class Database
     }
 
     function getMembers() {
-
-    }
-
-    function getMember($member_id) {
-
+        $sql = "SELECT * FROM members";
+        $statement = $this->_db->prepare($sql);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
     function getInterests($member_id) {

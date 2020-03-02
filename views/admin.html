@@ -1,0 +1,73 @@
+<!--
+
+Interests page form for dating site user.
+
+@author  Keller Flint
+@date    1/26/2020
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <title>Your Dating Website</title>
+    <!-- Bootstrap CDN-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/profile_form_styles.css">
+    <link rel="stylesheet" href="styles/interest_styles.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/328/dating/">Your Dating Website</a>
+    <!--Empty button link for now-->
+    <button class="navbar-toggler" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</nav>
+<div class="container mt-3">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>State</th>
+            <th>Gender</th>
+            <th>Seeking</th>
+            <th>Premium</th>
+            <th>Interests</th>
+        </tr>
+        <repeat group="{{ @members }}" value="{{ @val }}">
+            <tr>
+                <td>{{@val['member_id']}}</td>
+                <td>{{@val['fname']}} {{@val['lname']}}</td>
+                <td>{{@val['age']}}</td>
+                <td>{{@val['phone']}}</td>
+                <td>{{@val['email']}}</td>
+                <td>{{@val['state']}}</td>
+                <td>{{@val['gender']}}</td>
+                <td>{{@val['seeking']}}</td>
+                <td>
+                    <check if="{{ @val['premium'] == 0 }}">
+                        <true>
+                            <input type="checkbox">
+                        </true>
+                        <false>
+                            <input type="checkbox" checked>
+                        </false>
+                    </check>
+                </td>
+                <td>
+                    <repeat group="{{ @GLOBALS['db']->getInterests(@val['member_id']) }}" value="@value">
+                        {{ @value["interest"] }}
+                    </repeat>
+                </td>
+            </tr>
+        </repeat>
+    </table>
+</div>
+</body>
+</html>

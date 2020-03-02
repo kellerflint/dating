@@ -177,5 +177,12 @@ class Controller
         echo $view->render("views/summary_form.html");
     }
 
+    function admin() {
+        global $db;
+        $this->_f3->set("members", $db->getMembers());
+        $view = new Template();
+        echo $view->render("views/admin.html");
+    }
+
 
 }

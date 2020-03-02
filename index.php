@@ -50,5 +50,10 @@ $f3->route('GET /summary', function () {
     $controller->summary();
 });
 
+$f3->route('GET /admin', function () {
+    global $controller;
+    $controller->admin();
+});
+
 // run fat free
 $f3->run();
