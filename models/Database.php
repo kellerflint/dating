@@ -112,6 +112,7 @@ class Database
                 $statement->execute([$id, $value]);
             }
         }
+        return $id;
     }
 
     function getMembers() {
@@ -123,7 +124,10 @@ class Database
     }
 
     function getInterests($member_id) {
-
+        $sql = "SELECT member_id, interests.interest_id, interest FROM interests INNER JOIN members_interests ON interests.interest_id = members_interests.interest_id WHERE member_id = ?";
+        $statement = $this->_db->prepare($sql);
+        $statement->execute([$member_id]);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
     function getIndoorInterests() {

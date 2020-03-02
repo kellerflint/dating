@@ -163,7 +163,16 @@ class Controller
     function summary()
     {
         global $db;
-        $db->insertMember();
+        $id = $db->insertMember();
+
+        $result = $db->getInterests($id);
+        $interests = array();
+        foreach($result as $value) {
+            array_push($interests, $value["interest"]);
+        }
+
+
+        $this->_f3->set("interests", $interests);
         $view = new Template();
         echo $view->render("views/summary_form.html");
     }
